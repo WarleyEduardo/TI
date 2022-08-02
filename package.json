@@ -23,20 +23,20 @@
 		"joi": "^14.3.1",
 		"joi-date-extensions": "^1.2.0",
 		"jsonwebtoken": "^8.4.0",
-		"moment": "^2.23.0",
+		"moment": "^2.29.4",
 		"mongoose": "^5.4.0",
 		"mongoose-paginate": "^5.0.3",
 		"mongoose-unique-validator": "^2.0.2",
 		"morgan": "^1.9.1",
 		"multer": "^1.4.1",
-		"nan": "^2.15.0",
-		"node-correios": "^2.2.0",
+		"nan": "^2.16.0",
+		"node-correios": "^3.0.2",
 		"node-expat": "^2.4.0",
 		"node-pagseguro": "^0.1.9",
 		"nodemailer": "^4.7.0",
-		"nodemon": "^2.0.15",
+		"nodemon": "^2.0.19",
 		"request": "^2.88.0",
 		"xml2js": "^0.4.19",
-		"xml2json": "^0.11.2"
+		"xml2json": "^0.12.0"
 	}
 }
