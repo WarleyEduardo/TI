@@ -201,12 +201,12 @@ async function cadastraravaliacao(loja, produto) {
 async function cadastrarpagamento(loja) {
 
 	const dadosPagamento = {
-		status: 'padrao',
+		status: 'Pagamento Padrão',
 		valor: 39.4,
 		parcelas: 1,
 		forma: 'boleto',
 		endereco: {
-			local: 'Rua teste',
+			local: 'Rua Pagamento',
 			numero: '1',
 			bairro: 'centro',
 			cidade: 'Governador Valadares',
@@ -230,12 +230,12 @@ async function cadastrarpagamento(loja) {
 async function cadastrarentrega(loja) {
   
 	const dadosEntrega = {
-		status: 'padrao' ,
+		status: 'Entrega Padrão' ,
 		custo: 29.4,
 		tipo: '41106',
 		prazo: 6,
 		endereco: {
-			local: 'Rua teste',
+			local: 'Rua Entrega',
 			numero: '1',
 			bairro: 'centro',
 			cidade: 'Governador Valadares',
