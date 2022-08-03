@@ -66,7 +66,7 @@ class PedidoController {
 				{
 					offset: Number(offset || 0),
 					limit: Number(limit || 30),
-					populte: ['cliente,pagamento,entrega'],
+					populate: ['cliente', 'pagamento', 'entrega'],
 				}
 			);
 
