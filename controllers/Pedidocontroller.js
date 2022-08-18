@@ -103,8 +103,8 @@ class PedidoController {
 
 			pedido.carrinho = await Promise.all(
 				pedido.carrinho.map(async (item) => {
-					(item.produto = await Produto.findById(item.produto)),
-						(item.variacao = await Produto.findById(item.Variacao));
+					item.produto = await Produto.findById(item.produto);
+					item.variacao = await Variacao.findById(item.variacao);
 					return item;
 				})
 			);
@@ -212,9 +212,7 @@ class PedidoController {
 					pedido.carrinho = await Promise.all(
 						pedido.carrinho.map(async (item) => {
 							item.produto = await Produto.findById(item.produto);
-							item.variacao = await Variacao.findById(
-								item.variacao
-							);
+							item.variacao = await Variacao.findById(item.variacao);
 							return item;
 						})
 					);
