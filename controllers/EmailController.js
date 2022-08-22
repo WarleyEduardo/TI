@@ -42,7 +42,7 @@ const enviarNovoPedido = ({ usuario, pedido }) => {
 	const message = `
 	<h1 style="text-align:center;">Pedido Recebido</h1>
 	<br />
-	<p>O pedido realizado hoje, no dia ${moment(pedido.createdAt).format("DD/MM/YYYY")}, 
+	<p>O pedido n.º : ${pedido._id} realizado hoje, no dia ${moment(pedido.createdAt).format('DD/MM/YYYY')}, 
 	foi recebido com sucesso. 
 	</p>
 	<br />
@@ -50,7 +50,7 @@ const enviarNovoPedido = ({ usuario, pedido }) => {
 	<br /s><br />
 	<p>Atenciosamente</p>
 	<p>Equipe -  Loja TI</p>
-	`
+	`;
 
 	_send({
 		subject: "Pedido recebido - loja ti ",
@@ -66,7 +66,7 @@ const cancelarPedido = ({ usuario, pedido }) => {
 		const message = `
 	<h1 style="text-align:center;">Pedido Cancelado</h1>
 	<br />
-	<p>O pedido feito no dia ${moment(pedido.createdAt).format('DD/MM/YYYY')}, 
+	<p>O pedido n.º : ${pedido._id} feito no dia ${moment(pedido.createdAt).format('DD/MM/YYYY')}, 
 	foi cancelado. 
 	</p>
 	<br />
@@ -90,7 +90,7 @@ const atualizarPedido = ({ usuario, pedido, status, data, tipo }) => {
 	const message = `
 	<h1 style="text-align:center;">Pedido atualizado</h1>
 	<br />
-	<p>O feito, no dia ${moment(pedido.createdAt).format('DD/MM/YYYY')}, 
+	<p>O pedido n.º : ${pedido._id} feito, no dia ${moment(pedido.createdAt).format('DD/MM/YYYY')}, 
 	teve uma atualizado. 
 	</p>
 	<br />
