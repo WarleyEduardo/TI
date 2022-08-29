@@ -139,12 +139,11 @@ class ClienteController {
 
 	async showAdmin(req, res, next) {
 		try {
-			const cliente = await (
-				await Cliente.findOne({
+			const cliente = await Cliente.findOne({
 					_id: req.params.id,
 					loja: req.query.loja,
 				})
-			).populate({ path: 'usuario', select: '-salt -hash' });
+			.populate({ path: 'usuario', select: '-salt -hash' });
 			//).populate('usuario'); Modulo 7 - Api clientes - validações ( ocultando o salt e hash)
 
 			return res.send({ cliente });
