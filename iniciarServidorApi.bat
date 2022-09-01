@@ -1,3 +1,2 @@
-@echo --start mongod
-@echo --onpm start server.js
+@echo --npm start server.js
 nodemon server.js

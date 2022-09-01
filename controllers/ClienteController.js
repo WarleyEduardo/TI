@@ -46,19 +46,14 @@ class ClienteController {
 				loja,
 				nome: { $regex: search },
 			});
-			const pedidos = await Pedido.paginate(
-				{ loja, cliente: { $in: clientes.map((item) => item._id) } },
-				{ offset, limit, populate: ['cliente', 'pagamento', 'entrega'] }
-			);
+			const pedidos = await Pedido.paginate({ loja, cliente: { $in: clientes.map((item) => item._id) } }, { offset, limit, populate: ['cliente', 'pagamento', 'entrega'] });
 
 			pedidos.docs = await Promise.all(
 				pedidos.docs.map(async (pedido) => {
 					pedido.carrinho = await Promise.all(
 						pedido.carrinho.map(async (item) => {
 							item.produto = await Produto.findById(item.produto);
-							item.variacao = await Produto.findById(
-								item.variacao
-							);
+							item.variacao = await Produto.findById(item.variacao);
 							return item;
 						})
 					);
@@ -95,9 +90,7 @@ class ClienteController {
 					pedido.carrinho = await Promise.all(
 						pedido.carrinho.map(async (item) => {
 							item.produto = await Produto.findById(item.produto);
-							item.variacao = await Variacao.findById(
-								item.variacao
-							);
+							item.variacao = await Variacao.findById(item.variacao);
 							return item;
 						})
 					);
@@ -140,10 +133,9 @@ class ClienteController {
 	async showAdmin(req, res, next) {
 		try {
 			const cliente = await Cliente.findOne({
-					_id: req.params.id,
-					loja: req.query.loja,
-				})
-			.populate({ path: 'usuario', select: '-salt -hash' });
+				_id: req.params.id,
+				loja: req.query.loja,
+			}).populate({ path: 'usuario', select: '-salt -hash' });
 			//).populate('usuario'); Modulo 7 - Api clientes - validações ( ocultando o salt e hash)
 
 			return res.send({ cliente });
@@ -155,8 +147,7 @@ class ClienteController {
 	// put /admin/:id
 
 	async updateAdmin(req, res, next) {
-		const { nome, cpf, email, telefones, endereco, dataDeNascimento } =
-			req.body;
+		const { nome, cpf, email, telefones, endereco, dataDeNascimento } = req.body;
 
 		try {
 			// no exemplo const cliente é maiusculo : const Cliente
@@ -178,6 +169,18 @@ class ClienteController {
 			if (dataDeNascimento) cliente.dataDeNascimento = dataDeNascimento;
 			await cliente.save();
 			return res.send({ cliente });
+		} catch (e) {
+			next(e);
+		}
+	}
+
+	async removeAdmin(req, res, next) {
+		try {
+			const cliente = await Cliente.findById(req.params.id).populate('usuario');
+			if (!cliente) return res.status(400).send({ error: 'Cliente nao encontrado.' });
+			await cliente.usuario.remove();
+			await cliente.remove();
+			return res.send({ deletado: true });
 		} catch (e) {
 			next(e);
 		}
@@ -205,15 +208,7 @@ class ClienteController {
 	// post /cliente
 
 	async store(req, res, next) {
-		const {
-			nome,
-			email,
-			cpf,
-			telefones,
-			endereco,
-			dataDeNascimento,
-			password,
-		} = req.body;
+		const { nome, email, cpf, telefones, endereco, dataDeNascimento, password } = req.body;
 
 		const { loja } = req.query;
 
@@ -246,15 +241,7 @@ class ClienteController {
 	// update /cliente/:id
 
 	async update(req, res, next) {
-		const {
-			nome,
-			email,
-			cpf,
-			telefones,
-			endereco,
-			dataDeNascimento,
-			password,
-		} = req.body;
+		const { nome, email, cpf, telefones, endereco, dataDeNascimento, password } = req.body;
 
 		try {
 			// Modulo 7  -  Api clientes - validações ( correção no codigo )

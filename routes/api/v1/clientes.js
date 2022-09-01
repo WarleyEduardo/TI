@@ -85,6 +85,11 @@ router.put(
 	clienteController.updateAdmin
 );
 
+router.delete('/admin/:id',
+	auth.required,
+	LojaValidation.admin,
+	clienteController.removeAdmin);
+
 //  *********  CLIENTE = o que o cliente pode fazer *****************
 
 // ver os dados do cliente
