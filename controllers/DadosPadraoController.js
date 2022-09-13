@@ -29,6 +29,7 @@ async function cadastrarloja (){
 				numero: '123',
 				bairro: 'centro',
 				cidade: 'Governador Valadares',
+				estado: 'MG',
 				CEP: '35100-000',
 			},
 		};

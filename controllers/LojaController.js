@@ -46,7 +46,7 @@ class LojaController {
 	}
 
 	// put/:id
-	update(req, res, next) {
+	 update(req, res, next) {
 		const { nome, cnpj, email, telefones, endereco } = req.body;
 
 		// Loja.findById(req.params.id)  Modulo 6 -  Api validações   -  Atualizando a validação para o controller da loja

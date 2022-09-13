@@ -68,6 +68,7 @@ router.delete(
 // Rotas de produtos
 
 router.get('/:id/produtos', categoriaController.showProdutos); // testado
+
 router.put(
 	'/:id/produtos',
 	auth.required,
