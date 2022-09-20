@@ -71,11 +71,13 @@ class ProdutoController {
 			const {
 				titulo,
 				descricao,
+				fotos,
 				disponibilidade,
 				categoria,
 				preco,
 				promocao,
-				sku,
+				sku
+				
 			} = req.body;
 
 			const { loja } = req.query;
@@ -91,6 +93,7 @@ class ProdutoController {
 			if (descricao) produto.descricao = descricao;
 			if (disponibilidade !== undefined)
 				produto.disponibilidade = disponibilidade;
+			if (fotos) produto.foto;
 			if (preco) produto.preco = preco;
 			if (promocao) produto.promocao = promocao;
 			if (sku) produto.sku = sku;
@@ -104,11 +107,10 @@ class ProdutoController {
 				);
 				const newCategoria = await Categoria.findById(categoria);
 
-				/*   **** retirei a duplicação de codigo.
 
 				if (oldCategoria && newCategoria) {
 					oldCategoria.produtos = oldCategoria.filter(
-						(item) => item !== produto._id
+						(item) => item.toString() !== produto._id.toString()
 					);
 
 					newCategoria.produtos.push(produto._id);
@@ -120,11 +122,13 @@ class ProdutoController {
 					newCategoria.produtos.push(produto._id);
 					produto.categoria = categoria;
 					await newCategoria.save();
-				}*/
+				}
+
+				/*
 
 				if (oldCategoria) {
 					oldCategoria.produtos = oldCategoria.filter(
-						(item) => item !== produto._id
+						(item) => item.toString() !== produto._id.toString()
 					);
 
 					await oldCategoria.save();
@@ -136,6 +140,7 @@ class ProdutoController {
 
 					await newCategoria.save();
 				}
+				*/
 			}
 
 			await produto.save();

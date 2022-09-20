@@ -13,7 +13,7 @@ const ProdutoValidation = {
 			preco: Joi.number().required(),
 			promocao: Joi.number(),
 			sku: Joi.string().required(),
-		},
+		},	
 	},
 
 	update: {
@@ -29,6 +29,7 @@ const ProdutoValidation = {
 			preco: Joi.number().optional(),
 			promocao: Joi.number(),
 			sku: Joi.string().optional(),
+			foto: Joi.array().items(Joi.string()).optional()
 		},
 	},
 
