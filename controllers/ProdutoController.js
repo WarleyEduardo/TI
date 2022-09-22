@@ -102,14 +102,13 @@ class ProdutoController {
 				categoria &&
 				categoria.toString() !== produto.categoria.toString()
 			) {
-				const oldCategoria = await Categoria.findById(
-					produto.categoria
+				const oldCategoria = await Categoria.findById(produto.categoria
 				);
 				const newCategoria = await Categoria.findById(categoria);
 
 
 				if (oldCategoria && newCategoria) {
-					oldCategoria.produtos = oldCategoria.filter(
+					oldCategoria.produtos = oldCategoria.produtos.filter(
 						(item) => item.toString() !== produto._id.toString()
 					);
 
