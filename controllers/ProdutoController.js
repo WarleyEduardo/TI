@@ -93,7 +93,7 @@ class ProdutoController {
 			if (descricao) produto.descricao = descricao;
 			if (disponibilidade !== undefined)
 				produto.disponibilidade = disponibilidade;
-			if (fotos) produto.foto;
+			if (fotos) produto.fotos = fotos;
 			if (preco) produto.preco = preco;
 			if (promocao) produto.promocao = promocao;
 			if (sku) produto.sku = sku;
