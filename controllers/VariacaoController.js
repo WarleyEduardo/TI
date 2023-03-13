@@ -113,6 +113,7 @@ class VariacaoController {
 			variacao.fotos = variacao.fotos
 				.filter((item) => item)
 				.concat(novasImages);
+				
 
 			await variacao.save();
 			return res.send({ variacao });

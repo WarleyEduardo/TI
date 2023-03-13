@@ -281,7 +281,8 @@ class ProdutoController {
 			const produto = await Produto.findById(req.params.id).populate([
 				//'avaliacoes',
 				//'variacoes',
-				'loja',
+				//'loja',
+				'categoria'
 			]);
 
 			return res.send({ produto });
