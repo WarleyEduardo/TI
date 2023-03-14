@@ -34,6 +34,7 @@ class ProdutoController {
 			categoria: categoriaId,
 			preco,
 			promocao,
+			parcelado,
 			sku,
 		} = req.body;
 
@@ -47,6 +48,7 @@ class ProdutoController {
 				categoria: categoriaId,
 				preco,
 				promocao,
+				parcelado,
 				sku,
 				loja,
 			});
@@ -76,6 +78,7 @@ class ProdutoController {
 				categoria,
 				preco,
 				promocao,
+				parcelado,
 				sku
 				
 			} = req.body;
@@ -96,6 +99,7 @@ class ProdutoController {
 			if (fotos) produto.fotos = fotos;
 			if (preco) produto.preco = preco;
 			if (promocao) produto.promocao = promocao;
+			if (parcelado) produto.parcelado = parcelado;
 			if (sku) produto.sku = sku;
 
 			if (

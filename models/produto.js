@@ -10,6 +10,7 @@ const ProdutoSchema = Schema(
 		fotos: { type: Array, default: [] },
 		preco: { type: Number, required: true },
 		promocao: { type: Number },
+		parcelado: { type: Number,default : 1 },
 		sku: { type: String, required: true },
 		categoria: { type: Schema.Types.ObjectId, ref: 'Categoria' },
 		loja: { type: Schema.Types.ObjectId, ref: 'Loja' },
