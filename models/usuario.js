@@ -88,11 +88,11 @@ UsuarioSchema.methods.gerarToken = function () {
 // enviar o token
 UsuarioSchema.methods.enviarAuthJSON = function () {
 	return {
-		//_id: this._id,
-		nome: this.nome,
+		_id:   this._id,
+		nome:  this.nome,
 		email: this.email,
-		loja: this.loja,
-		role: this.permissao,
+		loja:  this.loja,
+		role:  this.permissao,
 		token: this.gerarToken(),
 	};
 };

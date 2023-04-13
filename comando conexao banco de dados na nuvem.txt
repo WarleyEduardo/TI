@@ -1,0 +1,8 @@
+
+
+connectar banco de dado na nuvem
+mongo "mongodb+srv://cluster0.ucg6ogr.mongodb.net/ecommmerce-api-teste" --username dev
+
+
+backup do banco na nuvem:
+mongodump --uri="mongodb+srv://dev:dev1837@cluster0.ucg6ogr.mongodb.net/ecommerce-api-teste"

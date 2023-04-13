@@ -58,26 +58,44 @@ class PedidoController {
 	// get 	/admin  indexAdmin
 
 	async indexAdmin(req, res, next) {
-		const { offset, limit, loja } = req.query;
+		const { offset, limit, loja ,dtInicial,dtFinal} = req.query;
 
-		try {
+		try {			
+
+			const _dtInicial = dtInicial ? dtInicial.slice(6, 10)
+				+ '-' + dtInicial.slice(3, 5) + '-' + dtInicial.slice(0,2) + 'T00:00:00' : '';
+			const _dtFinal = dtFinal ? dtFinal.slice(6, 10)
+				+ '-' + dtFinal.slice(3, 5) + '-' + dtFinal.slice(0,2) + 'T23:59:59' : '';		
+			
+					
 			const pedidos = await Pedido.paginate(
-				{ loja },
+				dtInicial && dtFinal
+					? {
+							loja,
+
+							createdAt: { $gte: `${_dtInicial}`, $lte: `${_dtFinal}` },
+					  }
+					: {
+							loja,
+					  },
 				{
 					offset: Number(offset || 0),
 					limit: Number(limit || 30),
 					populate: ['cliente', 'pagamento', 'entrega'],
 				}
-			);
+			); 
+			
+            
+				
+
+			
 
 			pedidos.docs = await Promise.all(
 				pedidos.docs.map(async (pedido) => {
 					pedido.carrinho = await Promise.all(
 						pedido.carrinho.map(async (item) => {
 							item.produto = await Produto.findById(item.produto);
-							item.variacao = await Variacao.findById(
-								item.variacao
-							);
+							item.variacao = await Variacao.findById(item.variacao);
 							return item;
 						})
 					);
