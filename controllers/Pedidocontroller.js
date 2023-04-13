@@ -60,14 +60,19 @@ class PedidoController {
 	async indexAdmin(req, res, next) {
 		const { offset, limit, loja ,dtInicial,dtFinal} = req.query;
 
-		try {			
+		try {	
+			
+			/*
 
 			const _dtInicial = dtInicial ? dtInicial.slice(6, 10)
 				+ '-' + dtInicial.slice(3, 5) + '-' + dtInicial.slice(0,2) + 'T00:00:00' : '';
 			const _dtFinal = dtFinal ? dtFinal.slice(6, 10)
 				+ '-' + dtFinal.slice(3, 5) + '-' + dtFinal.slice(0,2) + 'T23:59:59' : '';		
 			
-					
+			*/
+			
+			const _dtInicial = dtInicial ? dtInicial + 'T00:00:00' : '';
+			const _dtFinal = dtFinal ? dtFinal  + 'T23:59:59' : '';
 			const pedidos = await Pedido.paginate(
 				dtInicial && dtFinal
 					? {
