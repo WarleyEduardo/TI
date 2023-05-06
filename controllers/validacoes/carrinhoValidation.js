@@ -35,6 +35,7 @@ const getLojaValue = async (carrinho) => {
 				qtd = item.quantidade;
 			}
 
+			
 			return { preco, qtd };
 		})
 	);
@@ -50,11 +51,13 @@ async function CarrinhoValidation(carrinho) {
 		precoTotal: precoTotalCarrinho,
 		quantidade: quantidadeTotalCarrinho,
 	} = getCarrinhoValue(carrinho);
-	const { precoTotal: precotTotalLoja, quantidade: quantidadeTotalLoja } =
-		await getLojaValue(carrinho);
 
+	const { precoTotal: precoTotalLoja, quantidade: quantidadeTotalLoja } =
+		await getLojaValue(carrinho);	
+	
+	
 	return (
-		precoTotalCarrinho === precotTotalLoja &&
+		precoTotalCarrinho === precoTotalLoja &&
 		quantidadeTotalCarrinho === quantidadeTotalLoja
 	);
 }

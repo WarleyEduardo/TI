@@ -219,6 +219,7 @@ class PedidoController {
 	async index(req, res, next) {
 		const { offset, limit, loja } = req.query;
 
+		
 		try {
 			const cliente = await Cliente.findOne({ usuario: req.payload.id });
 			const pedidos = await Pedido.paginate(
@@ -230,19 +231,24 @@ class PedidoController {
 				}
 			);
 
+			 
 			pedidos.docs = await Promise.all(
 				pedidos.docs.map(async (pedido) => {
 					pedido.carrinho = await Promise.all(
 						pedido.carrinho.map(async (item) => {
 							item.produto = await Produto.findById(item.produto);
 							item.variacao = await Variacao.findById(item.variacao);
+							
 							return item;
 						})
 					);
+
+					return pedido;
 				})
 			);
+			
 
-			return res.send({ pedidos });
+			return res.send({ pedidos});
 		} catch (e) {
 			next(e);
 		}

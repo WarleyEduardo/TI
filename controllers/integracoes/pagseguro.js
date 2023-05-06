@@ -71,9 +71,15 @@ const _criarPagamentoComBoleto = (
 const _criarPagamentoComCartao = (
 	senderHash,
 	{ cliente, carrinho, entrega, pagamento }
+	
 ) => {
+
+
+	 
+	console.log('pag', pagamento);
 	return new Promise((resolver, rejeitar) => {
 		const pag = new PagSeguro(pagSeguroConfig);
+
 
 		pag.setSender({
 			name: cliente.nome,
