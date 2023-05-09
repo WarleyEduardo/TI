@@ -217,12 +217,22 @@ class PedidoController {
 	// GET / index
 
 	async index(req, res, next) {
-		const { offset, limit, loja } = req.query;
+		const { offset, limit, loja, dtInicial, dtFinal } = req.query;
 
+		const _dtInicial = dtInicial ? dtInicial + 'T00:00:00' : '';
+		const _dtFinal = dtFinal ? dtFinal + 'T23:59:59' : '';
 		
 		try {
 			const cliente = await Cliente.findOne({ usuario: req.payload.id });
 			const pedidos = await Pedido.paginate(
+				dtInicial && dtFinal
+					? {
+						  loja,
+						   cliente: cliente._id ,
+							createdAt: { $gte: `${_dtInicial}`, $lte: `${_dtFinal}` },
+					  }
+					:
+			
 				{ loja, cliente: cliente._id },
 				{
 					offset: Number(offset || 0),
