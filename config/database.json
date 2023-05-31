@@ -1,6 +1,6 @@
 {
 	"dbTest": "mongodb://localhost:27017/ecommerce-api-teste",
 	"dbTest2": "mongodb+srv://dev:dev1837@cluster0.ucg6ogr.mongodb.net/ecommerce-api-teste",
-	"dbProduction": "mongodb://localhost:27017/ecommerce-api"
+	"dbProduction": "mongodb+srv://dev:dev1837@cluster0.ucg6ogr.mongodb.net/ecommerce-api-teste"
 }
 
