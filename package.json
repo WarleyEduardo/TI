@@ -1,5 +1,3 @@
-/* 	//"build": "NODE_ENV=production pm2 serve.js --name=\"ecommerce-api\"",*/
-
 {
 	"name": "ecomerce-api",
 	"version": "0.0.1",
