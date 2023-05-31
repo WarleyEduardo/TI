@@ -1,6 +1,8 @@
 
 localhost:3000/v1/api/pedidos?loja=6214cd2c010c232de812118d&offset=0&limit=30
 
+/* 	//"build": "NODE_ENV=production pm2 serve.js --name=\"ecommerce-api\"",*/
+
 
 { 
     "carrinho" :[{
