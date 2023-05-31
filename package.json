@@ -3,6 +3,9 @@
 	"version": "0.0.1",
 	"description": "Api para curso e-comerce do zero",
 	"main": "server.js",
+	"engines": {
+    "node": "16.16.0"
+    },
 	"scripts": {
 		"test": "mocha --timeout 2000 --exit",
 		"dev": "NODE_ENV=development nodemon server.js",
@@ -38,7 +41,7 @@
 		"nodemon": "^2.0.19",
 		"request": "^2.88.0",
 		"xml2js": "^0.4.19",
-		"xml2json": "^0.12.0",
-		"node":"16.16.0"
+		"xml2json": "^0.12.0"
+	
 	}
 }
