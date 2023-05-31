@@ -6,7 +6,8 @@
 	"scripts": {
 		"test": "mocha --timeout 2000 --exit",
 		"dev": "NODE_ENV=development nodemon server.js",
-		"build": "NODE_ENV=production pm2 serve.js --name=\"ecommerce-api\""
+		"build": "NODE_ENV=production pm2 serve.js --name=\"ecommerce-api\"",
+		"start": "node server"
 	},
 	"author": "Warley",
 	"license": "ISC",

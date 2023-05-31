@@ -27,6 +27,7 @@ const PedidoSchema = Schema(
 					produtoEstatico: { type: String },
 					quantidade: { type: Number, required: true },
 					precoUnitario: { type: Number, required: true },
+					
 				},
 			],
 		},
